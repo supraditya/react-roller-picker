@@ -114,8 +114,10 @@ var TimeRoller = function TimeRoller(_ref) {
       scrollSnapType: "y mandatory",
       height: "3rem",
       overflowY: "scroll",
-      width: "66.666%",
-      scrollbarWidth: "none"
+      width: unit ? "66.666%" : "100%",
+      scrollbarWidth: "none",
+      listStyle: 'none',
+      paddingLeft: 0
     },
     scrollLi: {
       height: "3rem",
@@ -128,10 +130,11 @@ var TimeRoller = function TimeRoller(_ref) {
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
-      color: "#9C9C9C"
+      color: "#9C9C9C",
+      border: "solid 1px red"
     },
     unit: {
-      width: "33.333%",
+      width: unit ? "33.333%" : "0%",
       color: "#626262"
     },
     webkitScrollbar: "\n      .example::-webkit-scrollbar {\n        display: none;\n      }\n    " // Chrome
@@ -146,7 +149,7 @@ var TimeRoller = function TimeRoller(_ref) {
       key: value,
       style: selectedValue === value ? _objectSpread2(_objectSpread2({}, styles.boldValue), styles.scrollLi2) : styles.scrollLi2
     }, value);
-  })), /*#__PURE__*/React__default["default"].createElement("p", {
+  })), unit && /*#__PURE__*/React__default["default"].createElement("p", {
     style: styles.unit
   }, unit));
 };

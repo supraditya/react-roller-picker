@@ -1,6 +1,6 @@
 {
   "name": "react-timeroller",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A React Component that allows you to implement a 'briefcase-like' number picker wheel in your project",
   "main": "dist/time-roller.js",
   "scripts": {
