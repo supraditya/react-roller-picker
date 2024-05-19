@@ -5,7 +5,6 @@ A React component for selecting a value from a range using a scrollable list. Id
 ## Table of Contents
 
 - [Installation](#installation)
-- [Usage](#usage)
 - [Props](#props)
 - [Example](#example)
 - [Contributing](#contributing)
@@ -17,35 +16,6 @@ To install the `react-timeroller` package, use npm or yarn:
 
 ```bash
 npm install react-timeroller
-```
-
-## Usage
-
-Import the `TimeRoller` component and use it in your React application:
-
-```jsx
-import React, { useState } from 'react';
-import TimeRoller from 'react-timeroller';
-
-function App() {
-  const [selectedValue, setSelectedValue] = useState(2);
-  const range = [1, 2, 3, 4, 5];
-
-  return (
-    <div className="App">
-      <h1>Time Roller Demo</h1>
-      <TimeRoller
-        range={range}
-        unit="hours"
-        selectedValue={selectedValue}
-        setSelectedValue={setSelectedValue}
-      />
-      <p>Selected value: {selectedValue}</p>
-    </div>
-  );
-}
-
-export default App;
 ```
 
 ## Props
@@ -94,6 +64,8 @@ function App() {
 
 export default App;
 ```
+
+![Starter code output](./starter.gif)
 
 ## Contributing
 
