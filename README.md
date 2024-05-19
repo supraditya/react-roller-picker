@@ -24,9 +24,9 @@ npm install react-timeroller
 - Type: `Array<number | string>`
 - Description: An array of values that the roller can select from.
 
-### `unit` (required)
+### `unit` (optional)
 - Type: `string`
-- Description: A string representing the unit of the values (e.g., "hours", "minutes").
+- Description: A string label representing the unit of the values (e.g., "hours", "minutes").
 
 ### `selectedValue` (required)
 - Type: `number | string`

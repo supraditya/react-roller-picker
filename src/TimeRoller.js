@@ -56,13 +56,16 @@ const TimeRoller = ({ range, unit, selectedValue, setSelectedValue }) => {
       scrollSnapType: "y mandatory",
       height: "3rem",
       overflowY: "scroll",
-      width: "66.666%",
+      width: unit ? "66.666%" : "100%",
       scrollbarWidth: "none",
+      listStyle: 'none',
+      paddingLeft: 0,
     },
     scrollLi: {
       height: "3rem",
       scrollSnapAlign: "start",
       listStyleType: "none",
+
     },
     scrollLi2: {
       height: "100%",
@@ -71,9 +74,10 @@ const TimeRoller = ({ range, unit, selectedValue, setSelectedValue }) => {
       alignItems: "center",
       justifyContent: "center",
       color: "#9C9C9C",
+      border: "solid 1px red",
     },
     unit: {
-      width: "33.333%",
+      width: unit ? "33.333%" : "0%",
       color: "#626262",
     },
     webkitScrollbar: `
@@ -102,7 +106,7 @@ const TimeRoller = ({ range, unit, selectedValue, setSelectedValue }) => {
           );
         })}
       </ul>
-      <p style={styles.unit}>{unit}</p>
+      {unit && <p style={styles.unit}>{unit}</p>}
     </div>
   );
 };
