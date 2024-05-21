@@ -74,7 +74,6 @@ const TimeRoller = ({ range, unit, selectedValue, setSelectedValue }) => {
       alignItems: "center",
       justifyContent: "center",
       color: "#9C9C9C",
-      border: "solid 1px red",
     },
     unit: {
       width: unit ? "33.333%" : "0%",

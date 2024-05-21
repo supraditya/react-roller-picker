@@ -130,8 +130,7 @@ var TimeRoller = function TimeRoller(_ref) {
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
-      color: "#9C9C9C",
-      border: "solid 1px red"
+      color: "#9C9C9C"
     },
     unit: {
       width: unit ? "33.333%" : "0%",
