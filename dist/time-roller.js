@@ -96,13 +96,11 @@ var TimeRoller = function TimeRoller(_ref) {
     boldValue: {
       fontSize: "16pt",
       fontWeight: "bold",
-      color: "#00274C"
+      color: "#00274C",
+      transition: "all 0.2 ease-in-out"
     },
     rollerOuter: {
       position: "relative",
-      width: "100%",
-      border: "1px solid black",
-      height: "3rem",
       display: "flex",
       alignItems: "center",
       justifyContent: "space-between",
@@ -112,25 +110,26 @@ var TimeRoller = function TimeRoller(_ref) {
     },
     scrollList: {
       scrollSnapType: "y mandatory",
-      height: "3rem",
+      height: "9rem",
       overflowY: "scroll",
       width: unit ? "66.666%" : "100%",
       scrollbarWidth: "none",
-      listStyle: 'none',
+      listStyle: "none",
       paddingLeft: 0
     },
     scrollLi: {
-      height: "3rem",
+      height: "33%",
       scrollSnapAlign: "start",
       listStyleType: "none"
     },
     scrollLi2: {
-      height: "100%",
+      height: "33%",
       scrollSnapAlign: "start",
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
-      color: "#9C9C9C"
+      color: "#9C9C9C",
+      transition: "all 0.2 ease-in-out"
     },
     unit: {
       width: unit ? "33.333%" : "0%",
@@ -143,11 +142,15 @@ var TimeRoller = function TimeRoller(_ref) {
   }, /*#__PURE__*/React__default["default"].createElement("ul", {
     style: _objectSpread2(_objectSpread2({}, styles.scroll), styles.scrollList),
     ref: ulRef
-  }, /*#__PURE__*/React__default["default"].createElement("style", null, styles.webkitScrollbar), range.map(function (value) {
+  }, /*#__PURE__*/React__default["default"].createElement("style", null, styles.webkitScrollbar), /*#__PURE__*/React__default["default"].createElement("li", {
+    style: styles.scrollLi
+  }), range.map(function (value) {
     return /*#__PURE__*/React__default["default"].createElement("li", {
       key: value,
       style: selectedValue === value ? _objectSpread2(_objectSpread2({}, styles.boldValue), styles.scrollLi2) : styles.scrollLi2
     }, value);
+  }), /*#__PURE__*/React__default["default"].createElement("li", {
+    style: styles.scrollLi
   })), unit && /*#__PURE__*/React__default["default"].createElement("p", {
     style: styles.unit
   }, unit));

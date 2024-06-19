@@ -38,12 +38,10 @@ const TimeRoller = ({ range, unit, selectedValue, setSelectedValue }) => {
       fontSize: "16pt",
       fontWeight: "bold",
       color: "#00274C",
+      transition: "all 0.2 ease-in-out",
     },
     rollerOuter: {
       position: "relative",
-      width: "100%",
-      border: "1px solid black",
-      height: "3rem",
       display: "flex",
       alignItems: "center",
       justifyContent: "space-between",
@@ -54,26 +52,26 @@ const TimeRoller = ({ range, unit, selectedValue, setSelectedValue }) => {
 
     scrollList: {
       scrollSnapType: "y mandatory",
-      height: "3rem",
+      height: "9rem",
       overflowY: "scroll",
       width: unit ? "66.666%" : "100%",
       scrollbarWidth: "none",
-      listStyle: 'none',
+      listStyle: "none",
       paddingLeft: 0,
     },
     scrollLi: {
-      height: "3rem",
+      height: "33%",
       scrollSnapAlign: "start",
       listStyleType: "none",
-
     },
     scrollLi2: {
-      height: "100%",
+      height: "33%",
       scrollSnapAlign: "start",
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
       color: "#9C9C9C",
+      transition: "all 0.2 ease-in-out",
     },
     unit: {
       width: unit ? "33.333%" : "0%",
@@ -90,6 +88,7 @@ const TimeRoller = ({ range, unit, selectedValue, setSelectedValue }) => {
     <div style={styles.rollerOuter}>
       <ul style={{ ...styles.scroll, ...styles.scrollList }} ref={ulRef}>
         <style>{styles.webkitScrollbar}</style>
+        <li style={styles.scrollLi}></li>
         {range.map((value) => {
           return (
             <li
@@ -104,6 +103,7 @@ const TimeRoller = ({ range, unit, selectedValue, setSelectedValue }) => {
             </li>
           );
         })}
+        <li style={styles.scrollLi}></li>
       </ul>
       {unit && <p style={styles.unit}>{unit}</p>}
     </div>
