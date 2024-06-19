@@ -1,6 +1,15 @@
 import React, { useEffect, useRef } from "react";
 
-const TimeRoller = ({ range, unit, selectedValue, setSelectedValue }) => {
+const TimeRoller = ({
+  range,
+  unit,
+  selectedValue,
+  setSelectedValue,
+  selectedItemStyle,
+  unselectedItemsStyle,
+  rollerContainerStyle,
+  unitStyle,
+}) => {
   const ulRef = useRef(null);
   useEffect(() => {
     const ulElement = ulRef.current;
@@ -27,7 +36,7 @@ const TimeRoller = ({ range, unit, selectedValue, setSelectedValue }) => {
         (ulElement.scrollHeight - ulElement.clientHeight);
       ulElement.scrollTop = scrollTo;
     }
-  }, []);
+  }, [range, selectedValue]);
 
   const styles = {
     scroll: {
@@ -37,8 +46,6 @@ const TimeRoller = ({ range, unit, selectedValue, setSelectedValue }) => {
     boldValue: {
       fontSize: "16pt",
       fontWeight: "bold",
-      color: "#00274C",
-      transition: "all 0.2 ease-in-out",
     },
     rollerOuter: {
       position: "relative",
@@ -60,22 +67,19 @@ const TimeRoller = ({ range, unit, selectedValue, setSelectedValue }) => {
       paddingLeft: 0,
     },
     scrollLi: {
-      height: "33%",
+      height: "33.333%",
       scrollSnapAlign: "start",
       listStyleType: "none",
     },
     scrollLi2: {
-      height: "33%",
+      height: "33.333%",
       scrollSnapAlign: "start",
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
-      color: "#9C9C9C",
-      transition: "all 0.2 ease-in-out",
     },
     unit: {
       width: unit ? "33.333%" : "0%",
-      color: "#626262",
     },
     webkitScrollbar: `
       .example::-webkit-scrollbar {
@@ -85,7 +89,7 @@ const TimeRoller = ({ range, unit, selectedValue, setSelectedValue }) => {
   };
 
   return (
-    <div style={styles.rollerOuter}>
+    <div style={{ ...styles.rollerOuter, ...rollerContainerStyle }}>
       <ul style={{ ...styles.scroll, ...styles.scrollList }} ref={ulRef}>
         <style>{styles.webkitScrollbar}</style>
         <li style={styles.scrollLi}></li>
@@ -95,8 +99,8 @@ const TimeRoller = ({ range, unit, selectedValue, setSelectedValue }) => {
               key={value}
               style={
                 selectedValue === value
-                  ? { ...styles.boldValue, ...styles.scrollLi2 }
-                  : styles.scrollLi2
+                  ? { ...styles.boldValue, ...styles.scrollLi2, ...selectedItemStyle }
+                  : {...styles.scrollLi2, ...unselectedItemsStyle}
               }
             >
               {value}
@@ -105,9 +109,17 @@ const TimeRoller = ({ range, unit, selectedValue, setSelectedValue }) => {
         })}
         <li style={styles.scrollLi}></li>
       </ul>
-      {unit && <p style={styles.unit}>{unit}</p>}
+      {unit && <p style={{...styles.unit, ...unitStyle}}>{unit}</p>}
     </div>
   );
+};
+
+TimeRoller.defaultProps = {
+  unit: null,
+  selectedItemStyle: {},
+  unselectedItemsStyle: {},
+  rollerContainerStyle: {},
+  unitStyle: {},
 };
 
 export default TimeRoller;

@@ -62,7 +62,11 @@ var TimeRoller = function TimeRoller(_ref) {
   var range = _ref.range,
     unit = _ref.unit,
     selectedValue = _ref.selectedValue,
-    setSelectedValue = _ref.setSelectedValue;
+    setSelectedValue = _ref.setSelectedValue,
+    selectedItemStyle = _ref.selectedItemStyle,
+    unselectedItemsStyle = _ref.unselectedItemsStyle,
+    rollerContainerStyle = _ref.rollerContainerStyle,
+    unitStyle = _ref.unitStyle;
   var ulRef = React.useRef(null);
   React.useEffect(function () {
     var ulElement = ulRef.current;
@@ -86,7 +90,7 @@ var TimeRoller = function TimeRoller(_ref) {
       var scrollTo = index / (range.length - 1) * (ulElement.scrollHeight - ulElement.clientHeight);
       ulElement.scrollTop = scrollTo;
     }
-  }, []);
+  }, [range, selectedValue]);
   var styles = {
     scroll: {
       msOverflowStyle: "none",
@@ -95,9 +99,7 @@ var TimeRoller = function TimeRoller(_ref) {
     },
     boldValue: {
       fontSize: "16pt",
-      fontWeight: "bold",
-      color: "#00274C",
-      transition: "all 0.2 ease-in-out"
+      fontWeight: "bold"
     },
     rollerOuter: {
       position: "relative",
@@ -118,27 +120,24 @@ var TimeRoller = function TimeRoller(_ref) {
       paddingLeft: 0
     },
     scrollLi: {
-      height: "33%",
+      height: "33.333%",
       scrollSnapAlign: "start",
       listStyleType: "none"
     },
     scrollLi2: {
-      height: "33%",
+      height: "33.333%",
       scrollSnapAlign: "start",
       display: "flex",
       alignItems: "center",
-      justifyContent: "center",
-      color: "#9C9C9C",
-      transition: "all 0.2 ease-in-out"
+      justifyContent: "center"
     },
     unit: {
-      width: unit ? "33.333%" : "0%",
-      color: "#626262"
+      width: unit ? "33.333%" : "0%"
     },
     webkitScrollbar: "\n      .example::-webkit-scrollbar {\n        display: none;\n      }\n    " // Chrome
   };
   return /*#__PURE__*/React__default["default"].createElement("div", {
-    style: styles.rollerOuter
+    style: _objectSpread2(_objectSpread2({}, styles.rollerOuter), rollerContainerStyle)
   }, /*#__PURE__*/React__default["default"].createElement("ul", {
     style: _objectSpread2(_objectSpread2({}, styles.scroll), styles.scrollList),
     ref: ulRef
@@ -147,13 +146,20 @@ var TimeRoller = function TimeRoller(_ref) {
   }), range.map(function (value) {
     return /*#__PURE__*/React__default["default"].createElement("li", {
       key: value,
-      style: selectedValue === value ? _objectSpread2(_objectSpread2({}, styles.boldValue), styles.scrollLi2) : styles.scrollLi2
+      style: selectedValue === value ? _objectSpread2(_objectSpread2(_objectSpread2({}, styles.boldValue), styles.scrollLi2), selectedItemStyle) : _objectSpread2(_objectSpread2({}, styles.scrollLi2), unselectedItemsStyle)
     }, value);
   }), /*#__PURE__*/React__default["default"].createElement("li", {
     style: styles.scrollLi
   })), unit && /*#__PURE__*/React__default["default"].createElement("p", {
-    style: styles.unit
+    style: _objectSpread2(_objectSpread2({}, styles.unit), unitStyle)
   }, unit));
+};
+TimeRoller.defaultProps = {
+  unit: null,
+  selectedItemStyle: {},
+  unselectedItemsStyle: {},
+  rollerContainerStyle: {},
+  unitStyle: {}
 };
 
 exports["default"] = TimeRoller;
