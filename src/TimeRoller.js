@@ -2,13 +2,13 @@ import React, { useEffect, useRef } from "react";
 
 const TimeRoller = ({
   range,
-  unit,
+  unit=null,
   selectedValue,
   setSelectedValue,
-  selectedItemStyle,
-  unselectedItemsStyle,
-  rollerContainerStyle,
-  unitStyle,
+  selectedItemStyle={},
+  unselectedItemsStyle={},
+  rollerContainerStyle={},
+  unitStyle={},
 }) => {
   const ulRef = useRef(null);
   useEffect(() => {
@@ -112,14 +112,6 @@ const TimeRoller = ({
       {unit && <p style={{...styles.unit, ...unitStyle}}>{unit}</p>}
     </div>
   );
-};
-
-TimeRoller.defaultProps = {
-  unit: null,
-  selectedItemStyle: {},
-  unselectedItemsStyle: {},
-  rollerContainerStyle: {},
-  unitStyle: {},
 };
 
 export default TimeRoller;
